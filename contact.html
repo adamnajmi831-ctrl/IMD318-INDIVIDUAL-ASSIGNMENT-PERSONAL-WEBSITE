@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Norton - Contact</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #172B37;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* NAVIGATION */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #172B37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 23px;
+    transition: background 0.5s;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #72C6A5;
+}
+
+/* DARK MODE BUTTON */
+#themeToggle {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: white;
+    border: 1px solid #91A6A9;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+#themeToggle:hover {
+    background: #5DAB91;
+    border-color: #5DAB91;
+}
+
+/* PAGE HEADING */
+.page-heading {
+    text-align: center;
+    padding: 65px 20px 45px;
+}
+
+.page-heading h1 {
+    font-size: 34px;
+    letter-spacing: 5px;
+    color: #172B37;
+    margin-bottom: 12px;
+}
+
+.page-heading p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+/* CONTACT CONTAINER */
+.contact-container {
+    width: 85%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+    align-items: start;
+}
+
+/* CONTACT INFORMATION */
+.contact-info h2,
+.location-section h2 {
+    font-size: 19px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    color: #172B37;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 1px solid #D5DDE0;
+    border-radius: 4px;
+    background: #F7F9FA;
+    transition: 0.3s;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    border-color: #5DAB91;
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    background: #172B37;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+}
+
+.contact-details h3 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 7px;
+    color: #172B37;
+}
+
+.contact-details a {
+    font-size: 14px;
+    color: #555;
+    text-decoration: none;
+    word-break: break-word;
+    transition: 0.3s;
+}
+
+.contact-details a:hover {
+    color: #5DAB91;
+}
+
+/* LOCATION MAP */
+.map-box {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #D5DDE0;
+    background: #F7F9FA;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #315365;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.map-link:hover {
+    color: #5DAB91;
+}
+
+/* FOOTER */
+footer {
+    background: #172B37;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #121A20;
+    color: white;
+}
+
+.dark-mode .navbar,
+.dark-mode footer {
+    background: #080E12;
+}
+
+.dark-mode .page-heading h1,
+.dark-mode .contact-info h2,
+.dark-mode .location-section h2 {
+    color: white;
+}
+
+.dark-mode .page-heading p {
+    color: #C5CDD2;
+}
+
+.dark-mode .contact-card {
+    background: #1C2A33;
+    border-color: #53636C;
+}
+
+.dark-mode .contact-icon {
+    background: #416B70;
+}
+
+.dark-mode .contact-details h3 {
+    color: white;
+}
+
+.dark-mode .contact-details a {
+    color: #D0D8DC;
+}
+
+.dark-mode .contact-details a:hover {
+    color: #72C6A5;
+}
+
+.dark-mode .map-box {
+    border-color: #53636C;
+}
+
+.dark-mode .map-link {
+    color: #72C6A5;
+}
+
+/* MOBILE VIEW */
+@media screen and (max-width: 800px) {
+    .navbar {
+        padding: 17px 8px;
+        min-height: 75px;
+    }
+
+    .nav-menu {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 22px;
+    }
+
+    .nav-menu a {
+        font-size: 10px;
+    }
+
+    #themeToggle {
+        right: 8px;
+        top: 7px;
+        transform: none;
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+
+    .page-heading {
+        padding-top: 45px;
+    }
+
+    .contact-container {
+        width: 90%;
+        grid-template-columns: 1fr;
+        gap: 45px;
+        padding-bottom: 70px;
+    }
+
+    .contact-card {
+        padding: 17px;
+    }
+
+    .map-box {
+        height: 300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP NAVIGATION -->
+<div class="navbar">
+    <div class="nav-menu">
+        <a href="index.html">HOME</a>
+        <a href="biodata.html">BIODATA</a>
+        <a href="experience.html">EXPERIENCE</a>
+        <a href="education.html">EDUCATION</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="contact.html">CONTACT</a>
+    </div>
+
+    <button id="themeToggle" onclick="toggleTheme()">☾ DARK</button>
+</div>
+
+<!-- PAGE HEADING -->
+<div class="page-heading">
+    <h1>CONTACT</h1>
+    <p>GET IN TOUCH WITH ME</p>
+</div>
+
+<!-- CONTACT CONTENT -->
+<div class="contact-container">
+
+    <!-- LEFT SIDE: CONTACT INFORMATION -->
+    <div class="contact-info">
+
+        <h2>CONTACT INFORMATION</h2>
+
+        <!-- EMAIL -->
+        <div class="contact-card">
+            <div class="contact-icon">✉</div>
+            <div class="contact-details">
+                <h3>EMAIL</h3>
+                <a href="mailto:norton.13nn@gmail.com">
+                    norton.13nn@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <!-- PHONE -->
+        <div class="contact-card">
+            <div class="contact-icon">☎</div>
+            <div class="contact-details">
+                <h3>PHONE NUMBER</h3>
+                <a href="tel:+60126747765">
+                    012-674 7765
+                </a>
+            </div>
+        </div>
+
+        <!-- TIKTOK -->
+        <div class="contact-card">
+            <div class="contact-icon">♪</div>
+            <div class="contact-details">
+                <h3>TIKTOK</h3>
+                <a href="https://tiktok.com/@roms_romz" target="_blank">
+                    @roms_romz
+                </a>
+            </div>
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="contact-card">
+            <div class="contact-icon">◎</div>
+            <div class="contact-details">
+                <h3>INSTAGRAM</h3>
+                <a href="https://www.instagram.com/norton.nn13?rpxt=dGU0MHdwMjk4Ynd6" target="_blank">
+                    @norton.nn13
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE: LOCATION -->
+    <div class="location-section">
+
+        <h2>MY LOCATION</h2>
+
+        <div class="map-box">
+            <iframe
+                src="https://maps.google.com/maps?q=UiTM%20Kota%20Samarahan%201%2C%20Sarawak%2C%20Malaysia&z=16&output=embed"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <a class="map-link"
+           href="https://maps.app.goo.gl/xwwjLm1P1EkjRS2M8?g_st=aw"
+           target="_blank">
+            View Location on Google Maps →
+        </a>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Norton - Personal Website</p>
+    <p>Statement of Responsibility: This website was created by Adam Najmi for academic purposes.</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+/* DARK AND LIGHT MODE */
+function applyTheme() {
+    var savedTheme = localStorage.getItem("nortonTheme");
+    var button = document.getElementById("themeToggle");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        button.innerHTML = "☀ LIGHT";
+    } else {
+        document.body.classList.remove("dark-mode");
+        button.innerHTML = "☾ DARK";
+    }
+}
+
+function toggleTheme() {
+    var isDark = document.body.classList.toggle("dark-mode");
+
+    if (isDark) {
+        localStorage.setItem("nortonTheme", "dark");
+    } else {
+        localStorage.setItem("nortonTheme", "light");
+    }
+
+    applyTheme();
+}
+
+applyTheme();
+
+</script>
+
+</body>
+</html>

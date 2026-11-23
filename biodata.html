@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Norton - Biodata</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #172B37;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* NAVIGATION */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #172B37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 23px;
+    transition: background 0.5s;
+}
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.nav-menu a:hover {
+    color: #72C6A5;
+}
+
+/* DARK MODE BUTTON */
+#themeToggle {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: white;
+    border: 1px solid #91A6A9;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+#themeToggle:hover {
+    background: #5DAB91;
+    border-color: #5DAB91;
+}
+
+/* PAGE TITLE */
+.page-heading {
+    text-align: center;
+    padding: 65px 20px 35px;
+}
+.page-heading h1 {
+    font-size: 34px;
+    letter-spacing: 5px;
+    color: #172B37;
+    margin-bottom: 12px;
+}
+.page-heading p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+/* BIODATA CONTENT */
+.biodata-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 70px;
+    padding: 35px 10% 100px;
+}
+
+/* LEFT SIDE ACCORDION */
+.accordion {
+    flex: 1;
+    max-width: 550px;
+}
+.accordion-item {
+    margin-bottom: 18px;
+    border: 1px solid #BCC7CC;
+}
+.accordion-button {
+    width: 100%;
+    padding: 22px;
+    background: #172B37;
+    color: white;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+}
+.accordion-button:hover,
+.accordion-button.active {
+    background: #315365;
+}
+.accordion-button span {
+    font-size: 20px;
+}
+.accordion-content {
+    display: none;
+    padding: 25px;
+    background: #F7F9FA;
+    color: #444;
+    line-height: 2;
+    font-size: 14px;
+}
+.accordion-content.show {
+    display: block;
+}
+.accordion-content p {
+    margin-bottom: 8px;
+}
+.accordion-content strong {
+    color: #172B37;
+}
+
+/* AUDIO PLAYER */
+.accordion-content audio {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 8px 0 15px;
+}
+
+/* RIGHT SIDE IMAGE */
+.bio-image {
+    width: 330px;
+    flex-shrink: 0;
+}
+.bio-image img {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
+    display: block;
+    border-radius: 3px;
+}
+
+/* FOOTER */
+footer {
+    background: #172B37;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #121A20;
+    color: white;
+}
+.dark-mode .navbar,
+.dark-mode footer {
+    background: #080E12;
+}
+.dark-mode .page-heading h1 {
+    color: white;
+}
+.dark-mode .page-heading p {
+    color: #C5CDD2;
+}
+.dark-mode .accordion-item {
+    border-color: #53636C;
+}
+.dark-mode .accordion-button {
+    background: #263B47;
+}
+.dark-mode .accordion-button:hover,
+.dark-mode .accordion-button.active {
+    background: #416B70;
+}
+.dark-mode .accordion-content {
+    background: #1C2A33;
+    color: #D0D8DC;
+}
+.dark-mode .accordion-content strong {
+    color: white;
+}
+
+/* MOBILE VIEW */
+@media screen and (max-width: 800px) {
+    .navbar {
+        padding: 17px 8px;
+        min-height: 75px;
+    }
+    .nav-menu {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 22px;
+    }
+    .nav-menu a {
+        font-size: 10px;
+    }
+    #themeToggle {
+        right: 8px;
+        top: 7px;
+        transform: none;
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+    .biodata-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 35px;
+        padding: 25px 8% 70px;
+    }
+    .accordion {
+        width: 100%;
+    }
+    .bio-image {
+        width: 100%;
+        max-width: 330px;
+    }
+    .bio-image img {
+        height: 400px;
+    }
+    .page-heading {
+        padding-top: 45px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP NAVIGATION -->
+<div class="navbar">
+    <div class="nav-menu">
+        <a href="index.html">HOME</a>
+        <a href="biodata.html">BIODATA</a>
+        <a href="experience.html">EXPERIENCE</a>
+        <a href="education.html">EDUCATION</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="contact.html">CONTACT</a>
+    </div>
+
+    <button id="themeToggle" onclick="toggleTheme()">☾ DARK</button>
+</div>
+
+<!-- PAGE HEADING -->
+<div class="page-heading">
+    <h1>BIODATA</h1>
+    <p>GET TO KNOW MORE ABOUT ME</p>
+</div>
+
+<!-- BIODATA CONTENT -->
+<div class="biodata-container">
+
+    <!-- LEFT SIDE: ACCORDION -->
+    <div class="accordion">
+
+        <!-- PERSONAL INFORMATION -->
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="openAccordion(this)">
+                PERSONAL INFORMATION
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong>Full Name:</strong> Norton Nickos Nereus</p>
+                <p><strong>Date of Birth:</strong> 23 February 2006</p>
+                <p><strong>Age:</strong> 20 years old</p>
+                <p><strong>Place of Birth:</strong> Hospital Likas, Sabah</p>
+                <p><strong>Gender:</strong> Male</p>
+                <p><strong>Nationality:</strong> Malaysian</p>
+                <p><strong>State:</strong> Sabah</p>
+            </div>
+        </div>
+
+        <!-- PERSONAL DETAILS -->
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="openAccordion(this)">
+                PERSONAL DETAILS
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong>Hobbies:</strong> Playing badminton and gaming</p>
+                <p><strong>Favourite Food:</strong> Chicken rice</p>
+                <p><strong>Favourite Drink:</strong> Coconut water</p>
+                <p><strong>Favourite Colour:</strong> Red and blue</p>
+                <p><strong>Favourite Music:</strong> Green Day - Boulevard of Broken Dreams</p>
+
+                <p><strong>Listen to My Favourite Song:</strong></p>
+                <audio controls>
+                    <source src="audio/song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
+                <p><strong>Favourite Sport:</strong> Badminton</p>
+            </div>
+        </div>
+
+        <!-- ADDITIONAL INFORMATION -->
+        <div class="accordion-item">
+            <button class="accordion-button" onclick="openAccordion(this)">
+                ADDITIONAL INFORMATION
+                <span>+</span>
+            </button>
+            <div class="accordion-content">
+                <p><strong>Favourite Quote:</strong> "Maybe I'm not stuck in the past. Maybe I just loved those days too much."</p>
+                <p><strong>Life Quote:</strong> "Just be yourself."</p>
+                <p><strong>Personal Goals:</strong> To become a better person in life.</p>
+                <p><strong>Things I Enjoy:</strong> Walking alone in nature or at night because it gives me peace. I also prefer quiet places over crowded areas.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE: PORTRAIT IMAGE -->
+    <div class="bio-image">
+        <img src="images/nortonbio.jpg" alt="Norton portrait">
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Norton - Personal Website</p>
+    <p>Statement of Responsibility: This website was created by Adam Najmi for academic purposes.</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+/* DARK AND LIGHT MODE */
+function applyTheme() {
+    var savedTheme = localStorage.getItem("nortonTheme");
+    var button = document.getElementById("themeToggle");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        button.innerHTML = "☀ LIGHT";
+    } else {
+        document.body.classList.remove("dark-mode");
+        button.innerHTML = "☾ DARK";
+    }
+}
+
+function toggleTheme() {
+    var isDark = document.body.classList.toggle("dark-mode");
+
+    if (isDark) {
+        localStorage.setItem("nortonTheme", "dark");
+    } else {
+        localStorage.setItem("nortonTheme", "light");
+    }
+
+    applyTheme();
+}
+
+/* ACCORDION */
+function openAccordion(button) {
+    var content = button.nextElementSibling;
+    var isOpen = content.classList.contains("show");
+
+    var allContents = document.querySelectorAll(".accordion-content");
+    var allButtons = document.querySelectorAll(".accordion-button");
+
+    allContents.forEach(function(item) {
+        item.classList.remove("show");
+    });
+
+    allButtons.forEach(function(item) {
+        item.classList.remove("active");
+        item.querySelector("span").innerHTML = "+";
+    });
+
+    if (!isOpen) {
+        content.classList.add("show");
+        button.classList.add("active");
+        button.querySelector("span").innerHTML = "−";
+    }
+}
+
+applyTheme();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Norton - Education</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #172B37;
+    transition: background 0.5s, color 0.5s;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVIGATION */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #172B37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 23px;
+    transition: background 0.5s;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #72C6A5;
+}
+
+/* DARK MODE BUTTON */
+#themeToggle {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: white;
+    border: 1px solid #91A6A9;
+    padding: 9px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+#themeToggle:hover {
+    background: #5DAB91;
+    border-color: #5DAB91;
+}
+
+/* MAIN CONTENT */
+main {
+    flex: 1;
+}
+
+/* PAGE HEADING */
+.page-heading {
+    text-align: center;
+    padding: 65px 20px 35px;
+}
+
+.page-heading h1 {
+    font-size: 34px;
+    letter-spacing: 5px;
+    color: #172B37;
+    margin-bottom: 12px;
+}
+
+.page-heading p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+/* EDUCATION BUTTONS */
+.education-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 20px 45px;
+}
+
+.education-menu button {
+    background: #172B37;
+    color: white;
+    border: 1px solid #172B37;
+    padding: 18px 28px;
+    min-width: 190px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.education-menu button:hover,
+.education-menu button.active {
+    background: #5DAB91;
+    border-color: #5DAB91;
+}
+
+/* EDUCATION BACKGROUND DISPLAY */
+.education-display {
+    width: 85%;
+    max-width: 1100px;
+    height: 480px;
+    margin: 0 auto 100px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.education-display.show {
+    display: flex;
+}
+
+.education-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+.education-info {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 750px;
+    padding: 35px;
+}
+
+.education-info h2 {
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.education-info h3 {
+    font-size: 17px;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.education-info p {
+    font-size: 15px;
+    line-height: 2;
+}
+
+/* FOOTER */
+footer {
+    background: #172B37;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-size: 12px;
+    line-height: 2;
+    margin-top: auto;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #121A20;
+    color: white;
+}
+
+.dark-mode .navbar,
+.dark-mode footer {
+    background: #080E12;
+}
+
+.dark-mode .page-heading h1 {
+    color: white;
+}
+
+.dark-mode .page-heading p {
+    color: #C5CDD2;
+}
+
+.dark-mode .education-menu button {
+    background: #263B47;
+    border-color: #53636C;
+}
+
+.dark-mode .education-menu button:hover,
+.dark-mode .education-menu button.active {
+    background: #416B70;
+    border-color: #416B70;
+}
+
+/* MOBILE VIEW */
+@media screen and (max-width: 800px) {
+
+    .navbar {
+        padding: 17px 8px;
+        min-height: 75px;
+    }
+
+    .nav-menu {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 22px;
+    }
+
+    .nav-menu a {
+        font-size: 10px;
+    }
+
+    #themeToggle {
+        right: 8px;
+        top: 7px;
+        transform: none;
+        padding: 6px 9px;
+        font-size: 9px;
+    }
+
+    .page-heading {
+        padding-top: 45px;
+    }
+
+    .education-menu {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .education-menu button {
+        width: 85%;
+    }
+
+    .education-display {
+        width: 90%;
+        height: 450px;
+        margin-bottom: 70px;
+    }
+
+    .education-info {
+        padding: 22px;
+    }
+
+    .education-info h2 {
+        font-size: 23px;
+    }
+
+    .education-info h3 {
+        font-size: 14px;
+    }
+
+    .education-info p {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP NAVIGATION -->
+<div class="navbar">
+    <div class="nav-menu">
+        <a href="index.html">HOME</a>
+        <a href="biodata.html">BIODATA</a>
+        <a href="experience.html">EXPERIENCE</a>
+        <a href="education.html">EDUCATION</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="contact.html">CONTACT</a>
+    </div>
+
+    <button id="themeToggle" onclick="toggleTheme()">☾ DARK</button>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+    <!-- PAGE HEADING -->
+    <div class="page-heading">
+        <h1>EDUCATION</h1>
+        <p>MY EDUCATIONAL JOURNEY</p>
+    </div>
+
+    <!-- EDUCATION BUTTONS -->
+    <div class="education-menu">
+        <button onclick="showEducation('primary', this)">PRIMARY SCHOOL</button>
+        <button onclick="showEducation('secondary', this)">SECONDARY SCHOOL</button>
+        <button onclick="showEducation('university', this)">UNIVERSITY</button>
+    </div>
+
+    <!-- EDUCATION DISPLAY -->
+    <div class="education-display" id="educationDisplay">
+
+        <div class="education-overlay"></div>
+
+        <div class="education-info">
+            <h2 id="educationTitle"></h2>
+            <h3 id="educationPlace"></h3>
+            <p id="educationDescription"></p>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Norton - Personal Website</p>
+    <p>Statement of Responsibility: This website was created by Adam Najmi for academic purposes.</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+/* DARK AND LIGHT MODE */
+function applyTheme() {
+    var savedTheme = localStorage.getItem("nortonTheme");
+    var button = document.getElementById("themeToggle");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        button.innerHTML = "☀ LIGHT";
+    } else {
+        document.body.classList.remove("dark-mode");
+        button.innerHTML = "☾ DARK";
+    }
+}
+
+function toggleTheme() {
+    var isDark = document.body.classList.toggle("dark-mode");
+
+    if (isDark) {
+        localStorage.setItem("nortonTheme", "dark");
+    } else {
+        localStorage.setItem("nortonTheme", "light");
+    }
+
+    applyTheme();
+}
+
+/* EDUCATION INFORMATION */
+function showEducation(level, button) {
+
+    var display = document.getElementById("educationDisplay");
+    var title = document.getElementById("educationTitle");
+    var place = document.getElementById("educationPlace");
+    var description = document.getElementById("educationDescription");
+
+    var buttons = document.querySelectorAll(".education-menu button");
+
+    buttons.forEach(function(item) {
+        item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    if (level === "primary") {
+        display.style.backgroundImage = "url('images/pomotodon.jpeg')";
+        title.innerHTML = "PRIMARY SCHOOL";
+        place.innerHTML = "SK Pomotodon, Inanam, Sabah";
+        description.innerHTML = "2013 - 2018<br><br>I began my educational journey at SK Pomotodon, Inanam, Sabah. During these years, I gained basic knowledge and developed my foundation in different subjects. I also sat for the UPSR examination at this school.";
+    }
+
+    else if (level === "secondary") {
+        display.style.backgroundImage = "url('images/smkkolom.jpeg')";
+        title.innerHTML = "SECONDARY SCHOOL";
+        place.innerHTML = "SMK Kolombong, Inanam, Sabah";
+        description.innerHTML = "2019 - 2023<br><br>I continued my studies at SMK Kolombong, Inanam, Sabah, where I completed my secondary education and sat for the SPM examination. During Form 4 and Form 5, I took Geography and Economics as my elective subjects.";
+    }
+
+    else if (level === "university") {
+        display.style.backgroundImage = "url('images/uitmsr.jpeg')";
+        title.innerHTML = "UNIVERSITY";
+        place.innerHTML = "Universiti Teknologi MARA (UiTM), Kota Samarahan, Sarawak";
+        description.innerHTML = "2024 - Present<br><br>I am currently pursuing a Diploma in Information Management at UiTM Kota Samarahan, Sarawak. My university journey has given me opportunities to gain new knowledge, meet new people, and experience a different environment and culture.";
+    }
+
+    display.classList.add("show");
+}
+
+applyTheme();
+
+</script>
+
+</body>
+</html>

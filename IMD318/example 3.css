@@ -1,0 +1,7 @@
+<p class="notice">Important notice</p>
+
+.notice {
+  color: #7f1d1d;
+  background: #fee2e2;
+  font-weight: 700;
+}
